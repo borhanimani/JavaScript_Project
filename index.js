@@ -2,7 +2,6 @@ const searchInput = document.getElementById("search-input");
 const categoryFilter = document.getElementById("category-filter");
 const cardContainer = document.getElementById("card-container")
 const cartCount = document.getElementById("cart-count");
-let addToCartButton;
 let shopCount = 0;
 const productList = [
     { 'name': 'Footbal Ball', 'description': '6 mini size blue/red', 'price': 12.33, 'category': 'Sport', 'image': './Photos/bella-lac-LTyPTQ2tgNA-unsplash.jpg' },
@@ -17,29 +16,24 @@ updatePage();
 
 searchInput.addEventListener("input", () => {
     updateProductsView();
-    initButtonsListener();
 });
 
 categoryFilter.addEventListener("change", () => {
     updateProductsView();
-    initButtonsListener();
 });
 
-function initButtonsListener() {
-    addToCartButton = document.querySelectorAll(".add-to-cart");
-    addToCartButton.forEach((button) => {
-        button.addEventListener("click", () => {
-            shopCount++;
-            setCartCount(shopCount);
-        });
+const addToCartButton = document.querySelectorAll(".add-to-cart");
+addToCartButton.forEach((button) => {
+    button.addEventListener("click", () => {
+        shopCount++;
+        setCartCount(shopCount);
     });
-}
+});
 
 function updatePage() {
     updatePageBar();
     updateProductsView();
     setCartCount(shopCount);
-    initButtons();
 }
 
 function updatePageBar() {
